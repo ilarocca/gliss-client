@@ -1,0 +1,10 @@
+.logo {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
