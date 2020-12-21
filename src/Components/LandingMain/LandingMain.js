@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
-import "./LandingMain.css";
+import { Link } from 'react-router-dom';
+import './LandingMain.css';
+import logo from '../../Images/logo.png';
+
 function LandingMain() {
   return (
     <div className="LandingMain">
       <header className="LandingAppName">
-        <h1>Gliss</h1>
+        <img src={logo} alt="Logo" />
         <h3>
           <i>live in grocery bliss.</i>
         </h3>
