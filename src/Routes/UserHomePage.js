@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import AuthContext from '../Contexts/AuthContext';
 import ItemApiService from '../Services/item-api-service';
-import AddItem from './AddItem';
-import GetRecipes from './GetRecipes';
-import Recipe from './Recipe';
+import AddItem from '../Components/AddItem';
+import GetRecipes from '../Components/GetRecipes';
+import Recipe from '../Components/Recipe';
+import MyPantry from './MyPantry';
 
 export class UserHomePage extends Component {
   static contextType = AuthContext;
@@ -27,19 +28,10 @@ export class UserHomePage extends Component {
   render() {
     return (
       <div>
-        <header role="banner">
-          <h2>Welcome, {this.state.user.firstName}.</h2>
-        </header>
-        {this.state.items.length < 3 ? (
-          <div>
-            <h3>Add your first 3 items into your pantry.</h3>
-            <AddItem addItem={this.addItem} />
-          </div>
-        ) : (
-          <GetRecipes setRecipes={this.props.setRecipes} />
-        )}
+        <header role="banner"></header>
         <div>{this.state.error}</div>
-        <ul>
+        <MyPantry />
+        {/* <ul>
           {this.props.recipes === null
             ? null
             : this.props.recipes.map((recipe) => (
@@ -47,7 +39,7 @@ export class UserHomePage extends Component {
                   <Recipe recipe={recipe} />
                 </li>
               ))}
-        </ul>
+        </ul> */}
       </div>
     );
   }

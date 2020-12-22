@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import RecipeApiService from '../Services/recipe-api-service';
 import AuthContext from '../Contexts/AuthContext';
-import FavRecipe from './FavRecipe';
+import FavRecipe from '../Components/FavRecipe';
+import MyPantry from './MyPantry';
 
 class MyRecipes extends Component {
   static contextType = AuthContext;
@@ -38,7 +39,7 @@ class MyRecipes extends Component {
         <div>
           <h2>{this.state.user.firstName}'s Recipes</h2>
         </div>
-
+        <MyPantry />
         <ul>
           {this.state.recipes === undefined
             ? null

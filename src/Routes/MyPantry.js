@@ -1,16 +1,17 @@
 import { React, Component } from 'react';
-import GetRecipes from './GetRecipes';
-import AddItem from './AddItem';
+import GetRecipes from '../Components/GetRecipes';
+import AddItem from '../Components/AddItem';
 import AuthContext from '../Contexts/AuthContext';
 import ItemApiService from '../Services/item-api-service';
-import Item from './Item';
+import Item from '../Components/Item';
+import CategoryCard from '../Components/CategoryCard';
 
 export default class MyPantry extends Component {
   static contextType = AuthContext;
   state = {
     user: this.context.currentUser,
     items: [],
-    userQuery: '',
+    categoryCards: [],
     sortBy: 'Date',
   };
 
@@ -19,9 +20,40 @@ export default class MyPantry extends Component {
     this.setState({
       items: userItems,
     });
+
+    const categories = {
+      Grain: 1,
+      Meat: 2,
+      Fish: 3,
+      Vegatable: 4,
+      Fruit: 5,
+      Seasoning: 6,
+      Sauce: 7,
+      Baking: 8,
+      Sweets: 9,
+      Misc: 10,
+    };
+
+    const categoryCards = [];
+
+    for (const [key, value] of Object.entries(categories)) {
+      const categoryItems = [];
+      this.state.items.map((item) => {
+        if (item.categoryId === value) {
+          item.category = key;
+          categoryItems.push(item);
+        }
+      });
+      categoryCards.push(categoryItems);
+    }
+    console.log(categoryCards);
+    this.setState({
+      categoryCards: categoryCards,
+    });
   }
 
   deleteItem = (id) => {
+    console.log('delete');
     this.setState((prevState) => {
       const newItems = prevState.items.filter((item) => item.id !== id);
       return {
@@ -29,25 +61,43 @@ export default class MyPantry extends Component {
       };
     });
   };
+
   addItem = () => {
+    console.log('add item');
     this.componentDidMount();
   };
-  addToQuery = (queryItem) => {
-    this.setState((prevState) => ({
-      userQuery: prevState.userQuery + queryItem,
-    }));
-  };
 
-  setQuery = () => {
-    this.setState({
-      userQuery: '',
-    });
-  };
+  categoryCards = () => {
+    const categories = {
+      Grain: 1,
+      Meat: 2,
+      Fish: 3,
+      Vegatable: 4,
+      Fruit: 5,
+      Seasoning: 6,
+      Sauce: 7,
+      Baking: 8,
+      Sweets: 9,
+      Misc: 10,
+    };
 
-  handleChange = (e) => {
+    const categoryCards = [];
+
+    for (const [key, value] of Object.entries(categories)) {
+      const categoryItems = [];
+      this.state.items.map((item) => {
+        if (item.categoryId === value) {
+          item.category = key;
+          categoryItems.push(item);
+        }
+      });
+      categoryCards.push(categoryItems);
+    }
+    console.log(categoryCards);
     this.setState({
-      sortBy: e.target.value,
+      categoryCards: categoryCards,
     });
+    // return categoryCards;
   };
 
   render() {
@@ -60,21 +110,16 @@ export default class MyPantry extends Component {
     } else {
       items.sort((a, b) => (a.dateCreated < b.dateCreated ? 1 : -1));
     }
+
+    console.log(this.state.categoryCards);
     return (
       <main role="main">
         <header role="banner">
           <h2>{this.state.user.firstName}'s Pantry</h2>
         </header>
-        <GetRecipes
-          setRecipes={this.props.setRecipes}
-          // setIngredients={this.props.setIngredients}
-          // ingredients={this.props.ingredients}
-          userQuery={this.state.userQuery}
-          setQuery={this.setQuery}
-        />
         <AddItem addItem={this.addItem} />
         <div>
-          <div onChange={this.handleChange}>
+          {/* <div onChange={this.handleChange}>
             <input
               type="radio"
               value="Date"
@@ -99,15 +144,25 @@ export default class MyPantry extends Component {
               checked={this.state.sortBy === 'Alphebetical'}
             />
             Alphebetical
-          </div>
+          </div> */}
 
           <ul>
+            {this.state.categoryCards.map((category) =>
+              category.length === 0 ? null : (
+                <li>
+                  <CategoryCard category={category} deleteItem={this.deleteItem} />
+                </li>
+              )
+            )}
+          </ul>
+
+          {/* <ul>
             {this.state.items.map((item) => (
               <li key={item.id}>
                 <Item item={item} deleteItem={this.deleteItem} addToQuery={this.addToQuery} />
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </main>
     );

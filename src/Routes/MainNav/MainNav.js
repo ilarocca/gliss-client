@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AuthContext from '../Contexts/AuthContext';
-import './LandingNav/LandingNav.css';
-import logo from '../Images/logo.png';
+import AuthContext from '../../Contexts/AuthContext';
+import '../LandingNav/LandingNav.css';
+import logo from '../../Images/logo.png';
 import './MainNav.css';
 
 // function backToHome() {
@@ -12,16 +12,17 @@ import './MainNav.css';
 class MainNav extends Component {
   static contextType = AuthContext;
 
-  handleClick = (e) => {
-    e.preventDefault();
-    this.props.setRecipes([]);
-  };
+  // handleClick = (e) => {
+  //   e.preventDefault();
+  //   this.props.setRecipes([]);
+  // };
 
   render() {
     return (
       <div className="LandingNav">
         <header className="logo-header">
-          <button className="logo" onClick={this.handleClick}>
+          {/* set App state recipes to empty, cause rerender */}
+          <button className="logo">
             <Link to="/username">
               <img src={logo} alt="Logo" />
             </Link>

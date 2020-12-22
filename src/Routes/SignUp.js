@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Validator from './Validator';
+import Validator from '../Components/Validator';
 import AuthApiService from '../Services/auth-api-service';
 import AuthContext from '../Contexts/AuthContext';
 

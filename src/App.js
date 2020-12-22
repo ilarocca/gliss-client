@@ -1,20 +1,19 @@
 import { Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
-import LandingNav from './Components/LandingNav/LandingNav';
-import LandingMain from './Components/LandingMain/LandingMain';
-import SignUp from './Components/SignUp';
-import Login from './Components/Login';
-import MainNav from './Components/MainNav';
-import UserHomePage from './Components/UserHomePage';
-import MyPantry from './Components/MyPantry';
-import MyRecipes from './Components/MyRecipes';
-import MyAccount from './Components/MyAccount';
+import LandingNav from './Routes/LandingNav/LandingNav';
+import LandingMain from './Routes/LandingMain/LandingMain';
+import SignUp from './Routes/SignUp';
+import Login from './Routes/Login';
+import MainNav from './Routes/MainNav/MainNav';
+import UserHomePage from './Routes/UserHomePage';
+import MyPantry from './Routes/MyPantry';
+import MyRecipes from './Routes/MyRecipes';
+import MyAccount from './Routes/MyAccount';
 
 class App extends React.Component {
   state = {
     recipes: [],
-    // ingredients: '',
   };
 
   setRecipes = async (recipes) => {
@@ -22,13 +21,6 @@ class App extends React.Component {
       recipes: recipes,
     });
   };
-
-  // setIngredients = async (ingredients) => {
-  //   await this.setState({
-  //     ingredients: ingredients,
-  //   });
-  //   console.log(this.state.ingredients);
-  // };
 
   renderNavRoutes() {
     return (
@@ -51,27 +43,11 @@ class App extends React.Component {
         <Route
           exact
           path="/username"
-          render={(props) => (
-            <UserHomePage
-              {...props}
-              setRecipes={this.setRecipes}
-              recipes={this.state.recipes}
-              // setIngredients={this.setIngredients}
-              // ingredients={this.state.ingredients}
-            />
-          )}
+          render={(props) => <UserHomePage {...props} setRecipes={this.setRecipes} recipes={this.state.recipes} />}
         />
         <Route
           path="/username/my-pantry"
-          render={(props) => (
-            <MyPantry
-              {...props}
-              setRecipes={this.setRecipes}
-              recipes={this.state.recipes}
-              // setIngredients={this.setIngredients}
-              // ingredients={this.state.ingredients}
-            />
-          )}
+          render={(props) => <MyPantry {...props} setRecipes={this.setRecipes} recipes={this.state.recipes} />}
         />
         <Route path="/username/my-recipes" component={MyRecipes} />
         <Route path="/username/my-account" component={MyAccount} />
