@@ -1,10 +1,9 @@
 import { React, Component } from 'react';
-import GetRecipes from '../Components/GetRecipes';
-import AddItem from '../Components/AddItem';
-import AuthContext from '../Contexts/AuthContext';
-import ItemApiService from '../Services/item-api-service';
-import Item from '../Components/Item';
-import CategoryCard from '../Components/CategoryCard';
+import AddItem from '../../Components/AddItem/AddItem';
+import AuthContext from '../../Contexts/AuthContext';
+import ItemApiService from '../../Services/item-api-service';
+import CategoryCard from '../../Components/CategoryCard/CategoryCard';
+import './MyPantry.css';
 
 export default class MyPantry extends Component {
   static contextType = AuthContext;
@@ -68,7 +67,7 @@ export default class MyPantry extends Component {
         </header>
         <AddItem addItem={this.addItem} />
         <div>
-          <ul>
+          <ul className="category-card">
             {this.state.categoryCards.map((category) =>
               category.length === 0 ? null : (
                 <li>

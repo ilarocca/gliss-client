@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Item from './Item';
+import Item from '../Item/Item';
 
 export default class CategoryCard extends Component {
   state = {
@@ -25,17 +25,17 @@ export default class CategoryCard extends Component {
   };
   render() {
     return (
-      <div>
+      <fieldset>
         <h3>{this.state.category}</h3>
 
-        <ul>
+        <ul className="items">
           {this.state.items.map((item) => (
             <li key={item.id}>
               <Item item={item} deleteItem={this.deleteItem} />
             </li>
           ))}
         </ul>
-      </div>
+      </fieldset>
     );
   }
 }

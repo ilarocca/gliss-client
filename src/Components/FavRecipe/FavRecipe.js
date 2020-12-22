@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import AuthContext from '../Contexts/AuthContext';
-import RecipeApiService from '../Services/recipe-api-service';
+import AuthContext from '../../Contexts/AuthContext';
+import RecipeApiService from '../../Services/recipe-api-service';
 
 export default class FavRecipe extends Component {
   static contextType = AuthContext;

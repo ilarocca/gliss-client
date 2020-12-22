@@ -1,10 +1,7 @@
 import { Component } from 'react';
-import AuthContext from '../Contexts/AuthContext';
-import ItemApiService from '../Services/item-api-service';
-import AddItem from '../Components/AddItem';
-import GetRecipes from '../Components/GetRecipes';
-import Recipe from '../Components/Recipe';
-import MyPantry from './MyPantry';
+import AuthContext from '../../Contexts/AuthContext';
+import ItemApiService from '../../Services/item-api-service';
+import MyPantry from '../MyPantry/MyPantry';
 
 export class UserHomePage extends Component {
   static contextType = AuthContext;

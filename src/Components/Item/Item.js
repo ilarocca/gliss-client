@@ -1,5 +1,5 @@
 import { React, Component } from 'react';
-import ItemApiService from '../Services/item-api-service';
+import ItemApiService from '../../Services/item-api-service';
 
 export default class Item extends Component {
   state = {

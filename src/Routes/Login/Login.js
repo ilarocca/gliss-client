@@ -1,6 +1,6 @@
 import React from 'react';
-import AuthApiService from '../Services/auth-api-service';
-import AuthContext from '../Contexts/AuthContext';
+import AuthApiService from '../../Services/auth-api-service';
+import AuthContext from '../../Contexts/AuthContext';
 
 class Login extends React.Component {
   static contextType = AuthContext;

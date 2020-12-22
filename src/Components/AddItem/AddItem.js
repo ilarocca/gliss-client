@@ -1,6 +1,6 @@
 import { React, Component } from 'react';
-import AuthContext from '../Contexts/AuthContext';
-import ItemApiService from '../Services/item-api-service';
+import AuthContext from '../../Contexts/AuthContext';
+import ItemApiService from '../../Services/item-api-service';
 
 export default class AddItems extends Component {
   static contextType = AuthContext;

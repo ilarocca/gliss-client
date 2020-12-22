@@ -1,6 +1,6 @@
 import { React, Component } from 'react';
-import AuthContext from '../Contexts/AuthContext';
-import RecipeApiService from '../Services/recipe-api-service';
+import AuthContext from '../../Contexts/AuthContext';
+import RecipeApiService from '../../Services/recipe-api-service';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
 

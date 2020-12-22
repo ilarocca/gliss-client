@@ -1,15 +1,17 @@
 import { React, Component } from 'react';
-import AuthContext from '../Contexts/AuthContext';
-import ItemApiService from '../Services/item-api-service';
+import AuthContext from '../../Contexts/AuthContext';
+import ItemApiService from '../../Services/item-api-service';
 import { withRouter } from 'react-router-dom';
+import Ingredients from '../Ingredients/Ingredients';
+import './RecipesForm.css';
 require('dotenv').config();
 
-class GetRecipes extends Component {
+class RecipesForm extends Component {
   static contextType = AuthContext;
   state = {
     user: this.context.currentUser,
     items: [],
-    ingredients: '',
+    ingredients: [],
     placeholder: '',
     error: '',
   };
@@ -18,19 +20,6 @@ class GetRecipes extends Component {
     //pick three random user ingredients and assign them to placeholder
     const userItems = await ItemApiService.items(this.state.user.id);
 
-    if (userItems.length >= 3) {
-      const numbers = [];
-      for (let i = 0; i < 3; i++) {
-        numbers.push(Math.floor(Math.random() * userItems.length));
-      }
-      const uniq = [...new Set(numbers)];
-      const userIngredients = uniq.map((u) => userItems[u].item).join(', ');
-
-      // this.props.setIngredients(userIngredients);
-      this.setState({
-        ingredients: userIngredients,
-      });
-    }
     this.setState({
       items: userItems,
     });
@@ -45,7 +34,7 @@ class GetRecipes extends Component {
     //rerender empty homepage state
     this.props.setRecipes([]);
     this.setState({ error: null });
-    const { ingredients } = this.state;
+    const ingredients = this.state.ingredients.join(', ');
     // this.props.setQuery(ingredients);
     try {
       const apiId = 'app_id=' + process.env.REACT_APP_API_ID;
@@ -63,12 +52,36 @@ class GetRecipes extends Component {
     }
   };
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({
-      [name]: value,
-    });
+  handleCheck = (e) => {
+    // console.log('here');
+    if (e.target.checked === true) {
+      this.setState((prevState) => ({
+        ingredients: [...prevState.ingredients, ...[e.target.value]],
+      }));
+    } else {
+      const newIngredients = this.state.ingredients.filter((ingredient) => ingredient !== e.target.value);
+      this.setState({
+        ingredients: newIngredients,
+      });
+    }
+    console.log(this.state.ingredients);
   };
 
+  handleShuffle = () => {
+    const userItems = this.state.items;
+    console.log(this.state.items);
+
+    const numbers = [];
+    for (let i = 0; i < 3; i++) {
+      numbers.push(Math.floor(Math.random() * userItems.length));
+    }
+    const uniq = [...new Set(numbers)];
+    const userIngredients = uniq.map((u) => userItems[u].item);
+    console.log(userIngredients);
+    this.setState({
+      ingredients: userIngredients,
+    });
+  };
   handleDelete = () => {
     if (this.props.userQuery && this.state.ingredients === '') {
       this.props.setQuery();
@@ -76,25 +89,37 @@ class GetRecipes extends Component {
   };
 
   render() {
+    console.log(this.state.items);
     return (
       <form className="js-recipe-form" onSubmit={this.handleSubmit}>
-        <div>
+        {/* <div>
           <label for="item">Ingredients</label>
           <input
             type="text"
             name="ingredients"
             id="ingredients"
-            value={this.state.ingredients}
+            value={this.state.ingredients.join(', ')}
             onChange={this.handleChange}
             onEmptied={this.handleEmptied}
             placeholder={'steak, potatoes, etc'}
           />
-        </div>
-
+          <button type="button" onClick={this.handleShuffle}>
+            shuffle
+          </button>
+        </div> */}
+        <ul className="ingredients">
+          {this.props.categoryCards.map((category) =>
+            category.length === 0 ? null : (
+              <li>
+                <Ingredients category={category} handleCheck={this.handleCheck} />
+              </li>
+            )
+          )}
+        </ul>
         <button type="submit">Get Recipes</button>
       </form>
     );
   }
 }
 
-export default withRouter(GetRecipes);
+export default withRouter(RecipesForm);

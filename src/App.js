@@ -3,13 +3,14 @@ import React from 'react';
 import './App.css';
 import LandingNav from './Routes/LandingNav/LandingNav';
 import LandingMain from './Routes/LandingMain/LandingMain';
-import SignUp from './Routes/SignUp';
-import Login from './Routes/Login';
+import SignUp from './Routes/SignUp/SignUp';
+import Login from './Routes/Login/Login';
 import MainNav from './Routes/MainNav/MainNav';
-import UserHomePage from './Routes/UserHomePage';
-import MyPantry from './Routes/MyPantry';
-import MyRecipes from './Routes/MyRecipes';
-import MyAccount from './Routes/MyAccount';
+import UserHomePage from './Routes/UserHomePage/UserHomePage';
+import MyPantry from './Routes/MyPantry/MyPantry';
+import MyRecipes from './Routes/MyRecipes/MyRecipes';
+import MyAccount from './Routes/MyAccount/MyAccount';
+import GetRecipes from './Routes/GetRecipe/GetRecipes';
 
 class App extends React.Component {
   state = {
@@ -40,14 +41,10 @@ class App extends React.Component {
         <Route exact path="/" component={LandingMain} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route exact path="/username" render={(props) => <UserHomePage {...props} />} />
         <Route
-          exact
-          path="/username"
-          render={(props) => <UserHomePage {...props} setRecipes={this.setRecipes} recipes={this.state.recipes} />}
-        />
-        <Route
-          path="/username/my-pantry"
-          render={(props) => <MyPantry {...props} setRecipes={this.setRecipes} recipes={this.state.recipes} />}
+          path="/username/get-recipes"
+          render={(props) => <GetRecipes {...props} setRecipes={this.setRecipes} />}
         />
         <Route path="/username/my-recipes" component={MyRecipes} />
         <Route path="/username/my-account" component={MyAccount} />

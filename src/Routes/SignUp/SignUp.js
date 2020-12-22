@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Validator from '../Components/Validator';
-import AuthApiService from '../Services/auth-api-service';
-import AuthContext from '../Contexts/AuthContext';
+import Validator from '../../Components/Validator/Validator';
+import AuthApiService from '../../Services/auth-api-service';
+import AuthContext from '../../Contexts/AuthContext';
 
 export default class SignUp extends Component {
   static contextType = AuthContext;
