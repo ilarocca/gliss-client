@@ -7,8 +7,14 @@ export default class CategoryCard extends Component {
     category: this.props.category[0].category,
   };
 
+  // upon receiving new props, helps update items
+  componentWillReceiveProps(props) {
+    this.setState({
+      items: props.category,
+    });
+  }
+
   deleteItem = (id) => {
-    console.log('delete');
     this.setState((prevState) => {
       const newItems = prevState.items.filter((item) => item.id !== id);
       return {
@@ -18,7 +24,6 @@ export default class CategoryCard extends Component {
     this.props.deleteItem(id);
   };
   render() {
-    console.log(this.state.items);
     return (
       <div>
         <h3>{this.state.category}</h3>

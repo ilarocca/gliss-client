@@ -17,11 +17,8 @@ class GetRecipes extends Component {
   async componentDidMount() {
     //pick three random user ingredients and assign them to placeholder
     const userItems = await ItemApiService.items(this.state.user.id);
-    if (this.props.userQuery) {
-      this.setState({
-        ingredients: this.props.userQuery,
-      });
-    } else if (userItems.length >= 3) {
+
+    if (userItems.length >= 3) {
       const numbers = [];
       for (let i = 0; i < 3; i++) {
         numbers.push(Math.floor(Math.random() * userItems.length));
@@ -45,7 +42,6 @@ class GetRecipes extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    this.props.history.push('/username');
     //rerender empty homepage state
     this.props.setRecipes([]);
     this.setState({ error: null });

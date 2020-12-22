@@ -29,7 +29,7 @@ class MainNav extends Component {
           </button>
         </header>
         <nav className="signup-login">
-          <Link to="/username/my-pantry">My Pantry</Link>
+          <Link to="/username/get-recipes">Get Recipes</Link>
           <Link to="/username/my-recipes">My Recipes</Link>
           <Link to="/username/my-account">My Account</Link>
         </nav>
