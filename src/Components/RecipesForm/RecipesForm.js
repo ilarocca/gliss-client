@@ -89,7 +89,6 @@ class RecipesForm extends Component {
   };
 
   render() {
-    console.log(this.state.items);
     return (
       <form className="js-recipe-form" onSubmit={this.handleSubmit}>
         {/* <div>

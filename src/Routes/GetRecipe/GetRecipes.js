@@ -73,7 +73,7 @@ export default class GetRecipes extends Component {
           {this.state.recipes.map((recipe) =>
             recipe.length === 0 ? null : (
               <li>
-                <Recipe recipe={recipe} />
+                <Recipe recipe={recipe.recipe} />
               </li>
             )
           )}

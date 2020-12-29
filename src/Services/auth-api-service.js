@@ -1,4 +1,5 @@
 import config from '../config';
+import TokenService from './TokenService';
 
 const AuthApiService = {
   async login(username, password) {
@@ -27,6 +28,22 @@ const AuthApiService = {
     if (!res.ok) {
       return res.json().then((e) => Promise.reject(e));
     }
+    return res.json();
+  },
+
+  async getCurrentUser() {
+    const res = await fetch(`${config.API_ENDPOINT}/auth/current-user`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    });
+
+    if (!res.ok) {
+      return res.json().then((e) => Promise.reject(e));
+    }
+
     return res.json();
   },
 };

@@ -19,11 +19,9 @@ export default class Item extends Component {
     const date = new Date(dateCreated);
     return (
       <li>
-        <p>{item}</p>
-        {/* <p>{date.toString().split(' ').slice(0, 4).join(' ')}</p> */}
-
+        {item}
         <button type="button" onClick={this.handleClickDelete}>
-          Delete
+          x
         </button>
       </li>
     );

@@ -8,10 +8,9 @@ export default class Recipe extends Component {
   static contextType = AuthContext;
   state = {
     user: this.context.currentUser,
-    recipeName: this.props.recipe.recipe.label,
-    id: null,
-    url: this.props.recipe.recipe.url,
-    img: this.props.recipe.recipe.image,
+    recipeName: this.props.recipe.label,
+    url: this.props.recipe.url,
+    img: this.props.recipe.image,
     favorite: false,
     error: '',
   };
@@ -42,6 +41,7 @@ export default class Recipe extends Component {
   };
 
   render() {
+    console.log(this.state.recipe);
     return (
       <div>
         <h3>

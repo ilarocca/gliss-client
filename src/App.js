@@ -55,7 +55,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <nav class="app-nav">{this.renderNavRoutes()}</nav>
+        <nav className="app-nav">{this.renderNavRoutes()}</nav>
         <main className="app-main">{this.renderMainRoutes()}</main>
 
         <footer>&#169;Gliss</footer>

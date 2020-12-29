@@ -24,10 +24,10 @@ export class AuthProvider extends Component {
     this.getCurrentUser();
   }
 
-  async getCurrentUser() {
+  async getCurrentUser(id) {
     if (TokenService.hasAuthToken()) {
       try {
-        const user = await AuthApiService.getCurrentUser();
+        const user = await AuthApiService.getCurrentUser(id);
         this.setState({ currentUser: user });
       } catch (err) {
         this.setState({ error: err.message });

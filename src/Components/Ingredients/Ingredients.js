@@ -1,5 +1,5 @@
 import { Component } from 'react';
-export default class RecipeColumn extends Component {
+export default class Ingredients extends Component {
   handleCheck = (e) => {
     this.props.handleCheck(e);
   };
