@@ -18,7 +18,6 @@ export default class MyPantry extends Component {
     this.setState({
       items: userItems,
     });
-    console.log(userItems);
     const categories = {
       Grain: 1,
       Meat: 2,
@@ -44,7 +43,6 @@ export default class MyPantry extends Component {
       });
       categoryCards.push(categoryItems);
     }
-    console.log(categoryCards);
     this.setState({
       categoryCards: categoryCards,
     });

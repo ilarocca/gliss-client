@@ -28,7 +28,7 @@ class App extends React.Component {
       <React.Fragment>
         <Route exact path={['/', '/signup', '/login']} component={LandingNav} />
         <Route
-          path="/username"
+          path="/profile/:username"
           render={(props) => <MainNav {...props} setRecipes={this.setRecipes} recipes={this.state.recipes} />}
         />
       </React.Fragment>
@@ -41,13 +41,13 @@ class App extends React.Component {
         <Route exact path="/" component={LandingMain} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
-        <Route exact path="/username" render={(props) => <UserHomePage {...props} />} />
+        <Route exact path="/profile/:username" render={(props) => <UserHomePage {...props} />} />
         <Route
-          path="/username/get-recipes"
+          path="/profile/:username/get-recipes"
           render={(props) => <GetRecipes {...props} setRecipes={this.setRecipes} />}
         />
-        <Route path="/username/my-recipes" component={MyRecipes} />
-        <Route path="/username/my-account" component={MyAccount} />
+        <Route path="/profile/:username/my-recipes" component={MyRecipes} />
+        <Route path="/profile/:username/my-account" component={MyAccount} />
       </React.Fragment>
     );
   }

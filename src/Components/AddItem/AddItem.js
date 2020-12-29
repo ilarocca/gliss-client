@@ -16,7 +16,6 @@ export default class AddItem extends Component {
     e.preventDefault();
     this.setState({ error: null });
     const { item, categoryId, userId } = this.state;
-    console.log(categoryId);
     const newItem = { item, categoryId, userId };
     try {
       await ItemApiService.addItem(newItem);
@@ -39,7 +38,6 @@ export default class AddItem extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="error-msg">{this.state.error}</div>

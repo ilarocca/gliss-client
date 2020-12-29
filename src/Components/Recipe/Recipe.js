@@ -41,7 +41,6 @@ export default class Recipe extends Component {
   };
 
   render() {
-    console.log(this.state.recipe);
     return (
       <div>
         <h3>

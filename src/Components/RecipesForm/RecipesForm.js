@@ -53,7 +53,6 @@ class RecipesForm extends Component {
   };
 
   handleCheck = (e) => {
-    // console.log('here');
     if (e.target.checked === true) {
       this.setState((prevState) => ({
         ingredients: [...prevState.ingredients, ...[e.target.value]],
@@ -64,20 +63,16 @@ class RecipesForm extends Component {
         ingredients: newIngredients,
       });
     }
-    console.log(this.state.ingredients);
   };
 
   handleShuffle = () => {
     const userItems = this.state.items;
-    console.log(this.state.items);
-
     const numbers = [];
     for (let i = 0; i < 3; i++) {
       numbers.push(Math.floor(Math.random() * userItems.length));
     }
     const uniq = [...new Set(numbers)];
     const userIngredients = uniq.map((u) => userItems[u].item);
-    console.log(userIngredients);
     this.setState({
       ingredients: userIngredients,
     });

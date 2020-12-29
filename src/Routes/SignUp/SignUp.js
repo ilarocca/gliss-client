@@ -33,7 +33,7 @@ export default class SignUp extends Component {
       // save user info to context
       this.context.setCurrentUser(savedUser.user);
       // set next route on submit
-      this.props.history.push('/username');
+      this.props.history.push(`/profile/${username}`);
     } catch (err) {
       this.setState({ error: err.message });
     }

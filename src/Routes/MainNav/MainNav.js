@@ -12,26 +12,26 @@ import './MainNav.css';
 class MainNav extends Component {
   static contextType = AuthContext;
 
-  // handleClick = (e) => {
-  //   e.preventDefault();
-  //   this.props.setRecipes([]);
-  // };
+  state = {
+    username: this.context.currentUser.username,
+  };
 
   render() {
+    const username = this.state.username;
     return (
       <div className="LandingNav">
         <header className="logo-header">
           {/* set App state recipes to empty, cause rerender */}
           <button className="logo">
-            <Link to="/username">
+            <Link to={`/profile/${username}`}>
               <img src={logo} alt="Logo" />
             </Link>
           </button>
         </header>
         <nav className="signup-login">
-          <Link to="/username/get-recipes">Get Recipes</Link>
-          <Link to="/username/my-recipes">My Recipes</Link>
-          <Link to="/username/my-account">My Account</Link>
+          <Link to={`/profile/${username}/get-recipes`}>Get Recipes</Link>
+          <Link to={`/profile/${username}/my-recipes`}>My Recipes</Link>
+          <Link to={`/profile/${username}/my-account`}>My Account</Link>
         </nav>
       </div>
     );

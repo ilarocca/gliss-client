@@ -22,7 +22,7 @@ class Login extends React.Component {
       // save user info to context
       this.context.setCurrentUser(response.user);
       // set next route on submit
-      this.props.history.push('/username');
+      this.props.history.push(`/profile/${username}`);
     } catch (err) {
       this.setState({ error: err.message });
     }

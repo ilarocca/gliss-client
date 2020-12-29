@@ -19,7 +19,6 @@ export default class GetRecipes extends Component {
     this.setState({
       items: userItems,
     });
-    console.log(userItems);
     const categories = {
       Grain: 1,
       Meat: 2,
@@ -51,14 +50,12 @@ export default class GetRecipes extends Component {
   }
 
   setRecipes = async (recipes) => {
-    console.log(recipes);
     await this.setState({
       recipes: recipes,
     });
   };
 
   render() {
-    console.log(this.state.recipes);
     return (
       <div>
         {this.state.categoryCards.length === 0 ? null : (
