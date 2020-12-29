@@ -12,13 +12,12 @@ export default class GetRecipes extends Component {
     user: this.context.currentUser,
     recipes: [],
     categoryCards: [],
+    mounted: false,
   };
 
   async componentDidMount() {
     const userItems = await ItemApiService.items(this.state.user.id);
-    this.setState({
-      items: userItems,
-    });
+    this.setState({});
     const categories = {
       Grain: 1,
       Meat: 2,
@@ -36,7 +35,7 @@ export default class GetRecipes extends Component {
 
     for (const [key, value] of Object.entries(categories)) {
       const categoryItems = [];
-      this.state.items.map((item) => {
+      userItems.map((item) => {
         if (item.categoryId === value) {
           item.category = key;
           categoryItems.push(item);
@@ -45,7 +44,9 @@ export default class GetRecipes extends Component {
       categoryCards.push(categoryItems);
     }
     this.setState({
+      items: userItems,
       categoryCards: categoryCards,
+      mounted: true,
     });
   }
 
@@ -56,10 +57,13 @@ export default class GetRecipes extends Component {
   };
 
   render() {
+    if (this.state.mounted === false) {
+      return <div />;
+    }
     return (
       <div>
+        {this.state.items.length < 3 ? <h2>Add a few more items to your pantry!</h2> : null}
         {this.state.categoryCards.length === 0 ? null : (
-          // <h2>Add some items to your pantry to get started!</h2>
           <div>
             {/* <h2>Select items from your pantry</h2> */}
             <RecipesForm categoryCards={this.state.categoryCards} setRecipes={this.setRecipes} />

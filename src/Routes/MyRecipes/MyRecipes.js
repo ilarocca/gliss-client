@@ -10,12 +10,14 @@ class MyRecipes extends Component {
     user: this.context.currentUser,
     recipes: [],
     error: '',
+    mounted: false,
   };
 
   async componentDidMount() {
     const userRecipes = await RecipeApiService.recipes(this.state.user.id);
     this.setState({
       recipes: userRecipes,
+      mounted: true,
     });
   }
 
@@ -33,6 +35,9 @@ class MyRecipes extends Component {
     // sort recipes by date added
     const { recipes } = this.state;
     const newItems = recipes.sort((a, b) => (a.dateCreated < b.dateCreated ? 1 : -1));
+    if (this.state.mounted === false) {
+      return <div />;
+    }
     return (
       <div>
         <div>
@@ -40,13 +45,15 @@ class MyRecipes extends Component {
         </div>
 
         <ul>
-          {this.state.recipes === undefined
-            ? null
-            : this.state.recipes.map((recipe) => (
-                <li key={recipe}>
-                  <FavRecipe recipe={recipe} deleteRecipe={this.deleteRecipe} />
-                </li>
-              ))}
+          {this.state.recipes.length === 0 ? (
+            <h3>Go back and get some recipes!</h3>
+          ) : (
+            this.state.recipes.map((recipe) => (
+              <li key={recipe}>
+                <FavRecipe recipe={recipe} deleteRecipe={this.deleteRecipe} />
+              </li>
+            ))
+          )}
         </ul>
       </div>
     );
