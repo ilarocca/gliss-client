@@ -1,16 +1,19 @@
 import { Component } from 'react';
-import { AiFillHeart } from 'react-icons/ai';
 import AuthContext from '../../Contexts/AuthContext';
 import RecipeApiService from '../../Services/recipe-api-service';
+import { AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
+import './FavRecipe.css';
 
 export default class FavRecipe extends Component {
   static contextType = AuthContext;
   state = {
     user: this.context.currentUser,
     recipeName: this.props.recipe.recipeName,
+    ingredients: this.props.recipe.ingredients.split('#%'),
     id: this.props.recipe.id,
     url: this.props.recipe.url,
-    img: this.props.recipe.image,
+    img: this.props.recipe.img,
     error: '',
   };
 
@@ -31,16 +34,25 @@ export default class FavRecipe extends Component {
 
   render() {
     return (
-      <div>
-        <h3>
-          <a href={this.props.recipe.url} target="_blank" rel="noreferrer">
-            {this.props.recipe.recipeName}
-          </a>{' '}
-          <button type="submit" onClick={this.handleClick}>
-            <AiFillHeart />
-          </button>
-        </h3>
-        <img src={this.props.recipe.img} alt={this.props.recipe.recipeName} />
+      <div className="recipe-box">
+        <div className="recipe-info">
+          <h3 className="recipe-heading">
+            <button type="submit" className="favorite" onClick={this.handleClick}>
+              <AiFillStar size={25} style={{ color: 'gold' }} />
+            </button>{' '}
+            <a href={this.state.url} target="_blank" rel="noreferrer" className="recipe-name">
+              {this.state.recipeName}
+            </a>
+          </h3>
+          <div className="ingredients-header">Ingredients:</div>
+          <ul>
+            {this.state.ingredients.map((ingredient) => (
+              <li className="recipe-ingredient">{ingredient}</li>
+            ))}
+          </ul>
+        </div>
+
+        <img src={this.state.img} alt={this.state.recipeName} className="recipe-image" />
       </div>
     );
   }

@@ -1,0 +1,12 @@
+.my-recipes {
+  margin-top: 45px;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.recipes-header {
+  letter-spacing: -0.09rem;
+  text-shadow: 0.088rem 0.088rem 0.5625rem rgba(192, 192, 192, 0.188);
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+}

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Validator from '../../Components/Validator/Validator';
 import AuthApiService from '../../Services/auth-api-service';
 import AuthContext from '../../Contexts/AuthContext';
+import './SignUp.css';
+import cooking from './cooking.jpg';
+import eat from './eat.jpg';
 
 export default class SignUp extends Component {
   static contextType = AuthContext;
@@ -128,71 +131,93 @@ export default class SignUp extends Component {
 
     return (
       <div>
-        <header role="banner">
+        <header role="banner" className="signup-header">
           <h3>Let's get cooking.</h3>
         </header>
+        <div className="signup">
+          <form className="signup-form" onSubmit={this.handleSubmit}>
+            <div>{this.state.error}</div>
 
-        <form className="js-signup-form" onSubmit={this.handleSubmit}>
-          <div>{this.state.error}</div>
+            <div className="signup-field">
+              <label for="firstName">First Name</label>
+              <input
+                placeholder=""
+                type="text"
+                name="firstName"
+                id="firstName"
+                className="signup-input"
+                value={this.state.firstName}
+                onChange={this.handleChange}
+                onBlur={this.validateFirstName}
+              />
+            </div>
 
-          <div>
-            <label for="firstName">First Name</label>
-            <Validator isValid={firstNameValid} msg={validationError.firstName} />
-            <input
-              placeholder=""
-              type="text"
-              name="firstName"
-              id="firstName"
-              value={this.state.firstName}
-              onChange={this.handleChange}
-              onBlur={this.validateFirstName}
-            />
-          </div>
+            <div className="validator">
+              <Validator isValid={firstNameValid} msg={validationError.firstName} className="validator" />
+            </div>
 
-          <div>
-            <label for="lastName">Last Name</label>
-            <Validator isValid={lastNameValid} msg={validationError.lastName} />
-            <input
-              placeholder=""
-              type="text"
-              name="lastName"
-              id="lastName"
-              value={this.state.lastName}
-              onChange={this.handleChange}
-              onBlur={this.validateLastName}
-            />
-          </div>
+            <div className="signup-field">
+              <label for="lastName">Last Name</label>
+              <input
+                placeholder=""
+                type="text"
+                name="lastName"
+                id="lastName"
+                className="signup-input"
+                value={this.state.lastName}
+                onChange={this.handleChange}
+                onBlur={this.validateLastName}
+              />
+            </div>
 
-          <div>
-            <label for="username">Username</label>
-            <Validator isValid={usernameValid} msg={validationError.username} />
-            <input
-              placeholder=""
-              type="text"
-              name="username"
-              id="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-              onBlur={this.validateUsername}
-            />
-          </div>
+            <div className="validator">
+              <Validator isValid={lastNameValid} msg={validationError.lastName} className="validator" />
+            </div>
 
-          <div>
-            <label for="password">Password</label>
-            <Validator isValid={passwordValid} msg={validationError.password} />
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              onBlur={this.validatePassword}
-            />
-          </div>
-          <button disabled={!formValid} type="submit">
-            Sign Up
-          </button>
-        </form>
+            <div className="signup-field">
+              <label for="username">Username</label>
+              <input
+                placeholder=""
+                type="text"
+                name="username"
+                className="signup-input"
+                id="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+                onBlur={this.validateUsername}
+              />
+            </div>
+
+            <div className="validator">
+              <Validator isValid={usernameValid} msg={validationError.username} />
+            </div>
+
+            <div className="signup-field">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                className="signup-input"
+                value={this.state.password}
+                onChange={this.handleChange}
+                onBlur={this.validatePassword}
+              />
+            </div>
+
+            <div className="validator">
+              <Validator isValid={passwordValid} msg={validationError.password} />
+            </div>
+
+            <button disabled={!formValid} type="submit" className="signup-button">
+              Sign Up
+            </button>
+          </form>
+        </div>
+        {/* <div className="signup-images">
+          <img src={cooking} alt="cooking together" />
+          <img src={eat} alt="dig in" />
+        </div> */}
       </div>
     );
   }

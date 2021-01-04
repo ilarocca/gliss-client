@@ -34,21 +34,25 @@ class RecipesForm extends Component {
     //rerender empty homepage state
     this.props.setRecipes([]);
     this.setState({ error: null });
-    const ingredients = this.state.ingredients.join(', ');
-    // this.props.setQuery(ingredients);
-    try {
-      const apiId = 'app_id=' + process.env.REACT_APP_API_ID;
-      const apiKey = 'app_key=' + process.env.REACT_APP_API_KEY;
-      const proxy = 'https://calm-badlands-65255.herokuapp.com/';
-      const res = await fetch(`${proxy}https://api.edamam.com/search?q=${ingredients}&${apiId}&${apiKey}`, {
-        method: 'GET',
-      });
-      const json = await res.json();
-      //update homepage state with json of recipes
-      //call setRecipes to update UserHomePage state
-      this.props.setRecipes(json.hits);
-    } catch (err) {
-      this.setState({ error: err.message });
+    if (this.state.ingredients.length === 0) {
+      this.setState({ error: 'Select at least one ingredient to continue' });
+    } else {
+      const ingredients = this.state.ingredients.join(', ');
+      // this.props.setQuery(ingredients);
+      try {
+        const apiId = 'app_id=' + process.env.REACT_APP_API_ID;
+        const apiKey = 'app_key=' + process.env.REACT_APP_API_KEY;
+        const proxy = 'https://calm-badlands-65255.herokuapp.com/';
+        const res = await fetch(`${proxy}https://api.edamam.com/search?q=${ingredients}&${apiId}&${apiKey}`, {
+          method: 'GET',
+        });
+        const json = await res.json();
+        //update homepage state with json of recipes
+        //call setRecipes to update UserHomePage state
+        this.props.setRecipes(json.hits);
+      } catch (err) {
+        this.setState({ error: err.message });
+      }
     }
   };
 
@@ -110,7 +114,10 @@ class RecipesForm extends Component {
             )
           )}
         </ul>
-        <button type="submit">Get Recipes</button>
+        <button type="submit" className="recipe-submit">
+          Get Recipes
+        </button>
+        <div className="error-message">{this.state.error}</div>
       </form>
     );
   }

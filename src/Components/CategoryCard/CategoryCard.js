@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import Item from '../Item/Item';
+import Icon from './Icon';
+import './CategoryCard.css';
 
 export default class CategoryCard extends Component {
   state = {
@@ -25,8 +27,11 @@ export default class CategoryCard extends Component {
   };
   render() {
     return (
-      <fieldset>
-        <h3>{this.state.category}</h3>
+      <fieldset className="category-box">
+        <div className="pantry-icon">
+          {this.state.items.length > 0 ? <Icon category={this.state.items[0].categoryId} /> : null}
+        </div>
+        <h3 className="category-name">{this.state.category} </h3>
 
         <ul className="items">
           {this.state.items.map((item) => (

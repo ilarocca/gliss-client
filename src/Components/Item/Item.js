@@ -1,5 +1,6 @@
 import { React, Component } from 'react';
 import ItemApiService from '../../Services/item-api-service';
+import './Item.css';
 
 export default class Item extends Component {
   state = {
@@ -15,13 +16,13 @@ export default class Item extends Component {
   };
 
   render() {
-    const { item, dateCreated } = this.props.item;
-    const date = new Date(dateCreated);
+    const { item } = this.props.item;
+    // const date = new Date(dateCreated);
     return (
       <li>
         {item}
-        <button type="button" onClick={this.handleClickDelete}>
-          x
+        <button type="button" className="item-button" onClick={this.handleClickDelete}>
+          &#x2716;
         </button>
       </li>
     );

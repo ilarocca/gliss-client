@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import Icon from '../CategoryCard/Icon';
+import './Ingredients.css';
 export default class Ingredients extends Component {
   handleCheck = (e) => {
     this.props.handleCheck(e);
@@ -6,11 +8,14 @@ export default class Ingredients extends Component {
   render() {
     const category = this.props.category[0].category;
     return (
-      <fieldset>
-        <legend for={category}>{category}</legend>
+      <fieldset className="ingredient-box">
+        <Icon category={this.props.category[0].categoryId} />
+        <h3 for={category} className="category-name">
+          {category}
+        </h3>
 
         {this.props.category.map((item) => (
-          <div>
+          <div className="ingredient">
             <input type="checkbox" value={item.item} onChange={this.handleCheck} />
             <label htmlFor={item.itemcategory}>{item.item}</label>
           </div>

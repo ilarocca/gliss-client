@@ -7,7 +7,6 @@ import SignUp from './Routes/SignUp/SignUp';
 import Login from './Routes/Login/Login';
 import MainNav from './Routes/MainNav/MainNav';
 import UserHomePage from './Routes/UserHomePage/UserHomePage';
-import MyPantry from './Routes/MyPantry/MyPantry';
 import MyRecipes from './Routes/MyRecipes/MyRecipes';
 import MyAccount from './Routes/MyAccount/MyAccount';
 import GetRecipes from './Routes/GetRecipe/GetRecipes';
@@ -57,8 +56,6 @@ class App extends React.Component {
       <div className="App">
         <nav className="app-nav">{this.renderNavRoutes()}</nav>
         <main className="app-main">{this.renderMainRoutes()}</main>
-
-        <footer>&#169;Gliss</footer>
       </div>
     );
   }

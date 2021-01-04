@@ -61,7 +61,7 @@ export default class GetRecipes extends Component {
       return <div />;
     }
     return (
-      <div>
+      <div className="get-recipes">
         {this.state.items.length < 3 ? <h2>Add a few more items to your pantry!</h2> : null}
         {this.state.categoryCards.length === 0 ? null : (
           <div>
@@ -70,10 +70,10 @@ export default class GetRecipes extends Component {
           </div>
         )}
 
-        <ul>
+        <ul className="recipes">
           {this.state.recipes.map((recipe) =>
             recipe.length === 0 ? null : (
-              <li>
+              <li className="recipe">
                 <Recipe recipe={recipe.recipe} />
               </li>
             )

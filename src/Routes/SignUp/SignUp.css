@@ -1,0 +1,69 @@
+.signup-header {
+  margin-top: 100px;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  font-size: 20px;
+}
+
+.signup {
+  margin-top: 25px;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* background-image: url('granite.jpg'); */
+}
+
+.signup-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-field label {
+  margin-top: 20px;
+  margin-right: 5px;
+}
+.validator {
+  margin: 5px;
+  color: rgb(243, 177, 24);
+}
+
+.signup-input {
+  padding: 10px;
+  margin: 10px;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.signup-button {
+  appearance: none;
+  -webkit-appearance: none;
+
+  padding: 10px;
+  border: none;
+  background-color: #2442ee;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625rem 0.125rem 0px, rgba(0, 0, 0, 0.15) 0px 0.0625rem 0.1875rem 0px;
+}
+
+.signup-images {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  padding: 5px;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+@media all and (min-width: 600px) {
+  .signup-field {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

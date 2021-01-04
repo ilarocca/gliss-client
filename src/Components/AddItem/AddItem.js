@@ -1,6 +1,7 @@
 import { React, Component } from 'react';
 import AuthContext from '../../Contexts/AuthContext';
 import ItemApiService from '../../Services/item-api-service';
+import './AddItem.css';
 
 export default class AddItem extends Component {
   static contextType = AuthContext;
@@ -13,18 +14,23 @@ export default class AddItem extends Component {
   };
 
   handleSubmit = async (e) => {
+    console.log(this.state);
     e.preventDefault();
     this.setState({ error: null });
-    const { item, categoryId, userId } = this.state;
-    const newItem = { item, categoryId, userId };
-    try {
-      await ItemApiService.addItem(newItem);
-      this.props.addItem();
-      this.setState({
-        item: '',
-      });
-    } catch (err) {
-      this.setState({ error: err.message });
+    if (this.state.item === '') {
+      this.setState({ error: 'Please enter an item name' });
+    } else {
+      const { item, categoryId, userId } = this.state;
+      const newItem = { item, categoryId, userId };
+      try {
+        await ItemApiService.addItem(newItem);
+        this.props.addItem();
+        this.setState({
+          item: '',
+        });
+      } catch (err) {
+        this.setState({ error: err.message });
+      }
     }
   };
 
@@ -39,11 +45,11 @@ export default class AddItem extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="add-item-form" onSubmit={this.handleSubmit}>
         <div className="error-msg">{this.state.error}</div>
-        <div>
-          <label for="item">Item</label>
+        <div className="inputs">
           <input
+            className="item-input"
             type="text"
             name="item"
             id="item"
@@ -51,21 +57,29 @@ export default class AddItem extends Component {
             value={this.state.item}
             onChange={this.handleChange}
           />
-        </div>
 
-        <select name="categoryId" id="js-item-type" value={this.state.categoryId} onChange={this.handleChange}>
-          <option value="1">Grain</option>
-          <option value="2">Meat</option>
-          <option value="3">Fish</option>
-          <option value="4">Vegetable</option>
-          <option value="5">Fruit</option>
-          <option value="6">Seasoning</option>
-          <option value="7">Sauce</option>
-          <option value="8">Baking</option>
-          <option value="9">Sweets</option>
-          <option value="10">Misc</option>
-        </select>
-        <button type="submit">Add Item</button>
+          <select
+            name="categoryId"
+            id="js-item-type"
+            className="category"
+            value={this.state.categoryId}
+            onChange={this.handleChange}
+          >
+            <option value="1">Grain</option>
+            <option value="2">Meat</option>
+            <option value="3">Fish</option>
+            <option value="4">Vegetable</option>
+            <option value="5">Fruit</option>
+            <option value="6">Seasoning</option>
+            <option value="7">Sauce</option>
+            <option value="8">Baking</option>
+            <option value="9">Sweets</option>
+            <option value="10">Misc</option>
+          </select>
+        </div>
+        <button type="submit" className="item-submit">
+          Add Item
+        </button>
       </form>
     );
   }

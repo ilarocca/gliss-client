@@ -2,6 +2,7 @@ import { Component } from 'react';
 import RecipeApiService from '../../Services/recipe-api-service';
 import AuthContext from '../../Contexts/AuthContext';
 import FavRecipe from '../../Components/FavRecipe/FavRecipe';
+import './MyRecipes.css';
 
 class MyRecipes extends Component {
   static contextType = AuthContext;
@@ -33,15 +34,15 @@ class MyRecipes extends Component {
 
   render() {
     // sort recipes by date added
-    const { recipes } = this.state;
-    const newItems = recipes.sort((a, b) => (a.dateCreated < b.dateCreated ? 1 : -1));
+    // const { recipes } = this.state;
+    // const newItems = recipes.sort((a, b) => (a.dateCreated < b.dateCreated ? 1 : -1));
     if (this.state.mounted === false) {
       return <div />;
     }
     return (
-      <div>
+      <div className="my-recipes">
         <div>
-          <h2>{this.state.user.firstName}'s Recipes</h2>
+          <h2 className="recipes-header">{this.state.user.firstName}'s Recipes</h2>
         </div>
 
         <ul>

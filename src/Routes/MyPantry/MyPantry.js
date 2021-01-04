@@ -15,14 +15,12 @@ export default class MyPantry extends Component {
 
   async componentDidMount() {
     const userItems = await ItemApiService.items(this.state.user.id);
-    this.setState({
-      items: userItems,
-    });
+    this.setState({});
     const categories = {
       Grain: 1,
       Meat: 2,
       Fish: 3,
-      Vegatable: 4,
+      Vegetable: 4,
       Fruit: 5,
       Seasoning: 6,
       Sauce: 7,
@@ -35,7 +33,7 @@ export default class MyPantry extends Component {
 
     for (const [key, value] of Object.entries(categories)) {
       const categoryItems = [];
-      this.state.items.map((item) => {
+      userItems.map((item) => {
         if (item.categoryId === value) {
           item.category = key;
           categoryItems.push(item);
@@ -44,6 +42,7 @@ export default class MyPantry extends Component {
       categoryCards.push(categoryItems);
     }
     this.setState({
+      items: userItems,
       categoryCards: categoryCards,
     });
   }
@@ -59,9 +58,9 @@ export default class MyPantry extends Component {
 
   render() {
     return (
-      <main role="main">
-        <header role="banner">
-          <h2>{this.state.user.firstName}'s Pantry</h2>
+      <main role="main" className="pantry">
+        <header className="pantry-header">
+          <h2 className="user-first-name">{this.state.user.firstName}'s Pantry</h2>
         </header>
         <AddItem addItem={this.addItem} />
         <div>
