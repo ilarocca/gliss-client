@@ -1,0 +1,17 @@
+.ingredient {
+  text-align: start;
+}
+
+.ingredient-box {
+  margin: 10px;
+  background-image: url('../../Components/CategoryCard/wood.jpg');
+  border-radius: 5px;
+  border: none;
+  padding: 10px 6px 10px 6px;
+  box-shadow: rgba(253, 187, 187, 0.25) 0px 0.0625rem 0.125rem 0px, rgba(0, 0, 0, 0.15) 0px 0.0625rem 0.1875rem 0px;
+}
+
+.category-name {
+  margin: 7px;
+  font-style: italic;
+}

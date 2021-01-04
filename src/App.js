@@ -1,20 +1,19 @@
 import { Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
-import LandingNav from './Components/LandingNav/LandingNav';
-import LandingMain from './Components/LandingMain/LandingMain';
-import SignUp from './Components/SignUp';
-import Login from './Components/Login';
-import MainNav from './Components/MainNav';
-import UserHomePage from './Components/UserHomePage';
-import MyPantry from './Components/MyPantry';
-import MyRecipes from './Components/MyRecipes';
-import MyAccount from './Components/MyAccount';
+import LandingNav from './Routes/LandingNav/LandingNav';
+import LandingMain from './Routes/LandingMain/LandingMain';
+import SignUp from './Routes/SignUp/SignUp';
+import Login from './Routes/Login/Login';
+import MainNav from './Routes/MainNav/MainNav';
+import UserHomePage from './Routes/UserHomePage/UserHomePage';
+import MyRecipes from './Routes/MyRecipes/MyRecipes';
+import MyAccount from './Routes/MyAccount/MyAccount';
+import GetRecipes from './Routes/GetRecipe/GetRecipes';
 
 class App extends React.Component {
   state = {
     recipes: [],
-    // ingredients: '',
   };
 
   setRecipes = async (recipes) => {
@@ -23,19 +22,12 @@ class App extends React.Component {
     });
   };
 
-  // setIngredients = async (ingredients) => {
-  //   await this.setState({
-  //     ingredients: ingredients,
-  //   });
-  //   console.log(this.state.ingredients);
-  // };
-
   renderNavRoutes() {
     return (
       <React.Fragment>
         <Route exact path={['/', '/signup', '/login']} component={LandingNav} />
         <Route
-          path="/username"
+          path="/profile/:username"
           render={(props) => <MainNav {...props} setRecipes={this.setRecipes} recipes={this.state.recipes} />}
         />
       </React.Fragment>
@@ -48,33 +40,13 @@ class App extends React.Component {
         <Route exact path="/" component={LandingMain} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route exact path="/profile/:username" render={(props) => <UserHomePage {...props} />} />
         <Route
-          exact
-          path="/username"
-          render={(props) => (
-            <UserHomePage
-              {...props}
-              setRecipes={this.setRecipes}
-              recipes={this.state.recipes}
-              // setIngredients={this.setIngredients}
-              // ingredients={this.state.ingredients}
-            />
-          )}
+          path="/profile/:username/get-recipes"
+          render={(props) => <GetRecipes {...props} setRecipes={this.setRecipes} />}
         />
-        <Route
-          path="/username/my-pantry"
-          render={(props) => (
-            <MyPantry
-              {...props}
-              setRecipes={this.setRecipes}
-              recipes={this.state.recipes}
-              // setIngredients={this.setIngredients}
-              // ingredients={this.state.ingredients}
-            />
-          )}
-        />
-        <Route path="/username/my-recipes" component={MyRecipes} />
-        <Route path="/username/my-account" component={MyAccount} />
+        <Route path="/profile/:username/my-recipes" component={MyRecipes} />
+        <Route path="/profile/:username/my-account" component={MyAccount} />
       </React.Fragment>
     );
   }
@@ -82,10 +54,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <nav class="app-nav">{this.renderNavRoutes()}</nav>
+        <nav className="app-nav">{this.renderNavRoutes()}</nav>
         <main className="app-main">{this.renderMainRoutes()}</main>
-
-        <footer>&#169;Gliss</footer>
       </div>
     );
   }

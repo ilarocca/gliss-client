@@ -1,0 +1,30 @@
+.ingredients {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.get-recipes {
+  margin-top: 25px;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+/* 
+.recipes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+.recipe {
+  margin: 75px;
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: center;
+}
+
+@media all and (min-width: 1200px) {
+  .recipe {
+    margin: auto;
+    text-align: center;
+  }
+}

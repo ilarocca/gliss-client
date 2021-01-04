@@ -1,0 +1,19 @@
+.user-first-name {
+  letter-spacing: -0.09rem;
+  text-shadow: 0.088rem 0.088rem 0.5625rem rgba(192, 192, 192, 0.188);
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+}
+.category-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 0px;
+}
+
+.pantry {
+  margin-top: 30px;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
