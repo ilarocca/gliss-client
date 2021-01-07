@@ -20,9 +20,11 @@ class Login extends React.Component {
       const response = await AuthApiService.login(username, password);
       // save authToken to local storage
       this.context.login(response.authToken);
+      console.log('set');
       delete response.authToken;
       // save user info to context
       this.context.setCurrentUser(response.user);
+
       // set next route on submit
       this.props.history.push(`/profile/${username}`);
     } catch (err) {

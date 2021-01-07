@@ -30,10 +30,10 @@ export default class MyPantry extends Component {
     };
 
     const categoryCards = [];
-
+    //sort items into correct categories
     for (const [key, value] of Object.entries(categories)) {
       const categoryItems = [];
-      userItems.map((item) => {
+      userItems.forEach((item) => {
         if (item.categoryId === value) {
           item.category = key;
           categoryItems.push(item);
@@ -47,8 +47,8 @@ export default class MyPantry extends Component {
     });
   }
 
-  deleteItem = (id) => {
-    // updates to check category.length
+  deleteItem = () => {
+    // updates to check category.length, rerenders items
     this.componentDidMount();
   };
 
@@ -67,7 +67,7 @@ export default class MyPantry extends Component {
           <ul className="category-card">
             {this.state.categoryCards.map((category) =>
               category.length === 0 ? null : (
-                <li>
+                <li key={category[0].categoryId}>
                   <CategoryCard category={category} deleteItem={this.deleteItem} />
                 </li>
               )

@@ -33,9 +33,10 @@ class MyRecipes extends Component {
   };
 
   render() {
+    const { recipes } = this.state;
     // sort recipes by date added
-    // const { recipes } = this.state;
-    // const newItems = recipes.sort((a, b) => (a.dateCreated < b.dateCreated ? 1 : -1));
+    const sortedRecipes = recipes.sort((a, b) => (a.dateCreated < b.dateCreated ? 1 : -1));
+    // fetch user recipes before render
     if (this.state.mounted === false) {
       return <div />;
     }
@@ -45,12 +46,12 @@ class MyRecipes extends Component {
           <h2 className="recipes-header">{this.state.user.firstName}'s Recipes</h2>
         </div>
 
-        <ul>
+        <ul className="recipes">
           {this.state.recipes.length === 0 ? (
             <h3>Go back and get some recipes!</h3>
           ) : (
-            this.state.recipes.map((recipe) => (
-              <li key={recipe}>
+            sortedRecipes.map((recipe) => (
+              <li key={recipe.id}>
                 <FavRecipe recipe={recipe} deleteRecipe={this.deleteRecipe} />
               </li>
             ))

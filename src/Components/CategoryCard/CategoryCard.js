@@ -9,7 +9,7 @@ export default class CategoryCard extends Component {
     category: this.props.category[0].category,
   };
 
-  // upon receiving new props, helps update items
+  // upon receiving new props, rerenders to update items
   componentWillReceiveProps(props) {
     this.setState({
       items: props.category,
@@ -23,7 +23,7 @@ export default class CategoryCard extends Component {
         items: newItems,
       };
     });
-    this.props.deleteItem(id);
+    this.props.deleteItem();
   };
   render() {
     return (

@@ -3,14 +3,12 @@ import './LandingMain.css';
 import { MdLocalGroceryStore } from 'react-icons/md';
 import { GoSearch } from 'react-icons/go';
 import { GiCook } from 'react-icons/gi';
-// import logo from '../../Images/logo.png';
 
 function LandingMain() {
   return (
     <>
       <header className="tagline">
         <div>
-          {/* <img src={logo} alt="Logo" className="LandingLogo" /> */}
           <h2 className="tagline-text">Live in grocery bliss.</h2>
           <Link to="/signup">
             <button className="get-started">Get Started</button>

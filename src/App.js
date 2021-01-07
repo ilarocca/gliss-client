@@ -1,4 +1,3 @@
-import { Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
 import LandingNav from './Routes/LandingNav/LandingNav';
@@ -10,26 +9,18 @@ import UserHomePage from './Routes/UserHomePage/UserHomePage';
 import MyRecipes from './Routes/MyRecipes/MyRecipes';
 import MyAccount from './Routes/MyAccount/MyAccount';
 import GetRecipes from './Routes/GetRecipe/GetRecipes';
+import AuthContext from './Contexts/AuthContext';
+import PublicOnlyRoute from './Components/Utils/PublicOnlyRoute';
+import PrivateRoute from './Components/Utils/PrivateRoute';
 
 class App extends React.Component {
-  state = {
-    recipes: [],
-  };
-
-  setRecipes = async (recipes) => {
-    await this.setState({
-      recipes: recipes,
-    });
-  };
+  static contextType = AuthContext;
 
   renderNavRoutes() {
     return (
       <React.Fragment>
-        <Route exact path={['/', '/signup', '/login']} component={LandingNav} />
-        <Route
-          path="/profile/:username"
-          render={(props) => <MainNav {...props} setRecipes={this.setRecipes} recipes={this.state.recipes} />}
-        />
+        <PublicOnlyRoute exact path={['/', '/signup', '/login']} component={LandingNav} />
+        <PrivateRoute path="/profile/:username" component={MainNav} />
       </React.Fragment>
     );
   }
@@ -37,16 +28,13 @@ class App extends React.Component {
   renderMainRoutes() {
     return (
       <React.Fragment>
-        <Route exact path="/" component={LandingMain} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/login" component={Login} />
-        <Route exact path="/profile/:username" render={(props) => <UserHomePage {...props} />} />
-        <Route
-          path="/profile/:username/get-recipes"
-          render={(props) => <GetRecipes {...props} setRecipes={this.setRecipes} />}
-        />
-        <Route path="/profile/:username/my-recipes" component={MyRecipes} />
-        <Route path="/profile/:username/my-account" component={MyAccount} />
+        <PublicOnlyRoute exact path="/" component={LandingMain} />
+        <PublicOnlyRoute path="/signup" component={SignUp} />
+        <PublicOnlyRoute path="/login" component={Login} />
+        <PrivateRoute exact path="/profile/:username" component={UserHomePage} />
+        <PrivateRoute path="/profile/:username/get-recipes" component={GetRecipes} />
+        <PrivateRoute path="/profile/:username/my-recipes" component={MyRecipes} />
+        <PrivateRoute path="/profile/:username/my-account" component={MyAccount} />
       </React.Fragment>
     );
   }
@@ -56,6 +44,7 @@ class App extends React.Component {
       <div className="App">
         <nav className="app-nav">{this.renderNavRoutes()}</nav>
         <main className="app-main">{this.renderMainRoutes()}</main>
+        <div>{this.context.error}</div>
       </div>
     );
   }

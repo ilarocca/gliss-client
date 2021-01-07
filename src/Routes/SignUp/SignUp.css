@@ -39,16 +39,12 @@
 }
 
 .signup-button {
-  appearance: none;
-  -webkit-appearance: none;
-
   padding: 10px;
   border: none;
   background-color: #2442ee;
   color: #fff;
   font-weight: 600;
   border-radius: 5px;
-  width: 100%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625rem 0.125rem 0px, rgba(0, 0, 0, 0.15) 0px 0.0625rem 0.1875rem 0px;
 }
 

@@ -3,8 +3,6 @@ import Validator from '../../Components/Validator/Validator';
 import AuthApiService from '../../Services/auth-api-service';
 import AuthContext from '../../Contexts/AuthContext';
 import './SignUp.css';
-import cooking from './cooking.jpg';
-import eat from './eat.jpg';
 
 export default class SignUp extends Component {
   static contextType = AuthContext;
@@ -214,10 +212,6 @@ export default class SignUp extends Component {
             </button>
           </form>
         </div>
-        {/* <div className="signup-images">
-          <img src={cooking} alt="cooking together" />
-          <img src={eat} alt="dig in" />
-        </div> */}
       </div>
     );
   }

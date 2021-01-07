@@ -33,22 +33,4 @@ export default function Icon(props) {
   } else {
     return <div />;
   }
-
-  // const icons = [
-  //   { 1: <GiWheat /> },
-  //   { 2: <GiMeat /> },
-  //   { 3: <GiFriedFish /> },
-  //   { 4: <GiCarrot /> },
-  //   { 5: <GiOrangeSlice /> },
-  //   { 6: <GiSaltShaker /> },
-  //   { 7: <FaWineBottle /> },
-  //   { 8: <MdCake /> },
-  //   { 9: <FaCookieBite /> },
-  //   { 10: <ImDrawer /> },
-  // ];
-  // console.log(props.category);
-
-  // const correctIcon = icons.find((icon) => icon === props.category);
-  // console.log(icons);
-  // return <div />;
 }

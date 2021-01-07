@@ -57,9 +57,10 @@ body {
 
 .active {
   display: block;
+  padding-left: 0px;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 760px) {
   .MainLogo {
     padding-left: 81px;
     padding-bottom: 1.75px;

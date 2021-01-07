@@ -17,7 +17,6 @@ export default class Item extends Component {
 
   render() {
     const { item } = this.props.item;
-    // const date = new Date(dateCreated);
     return (
       <li>
         {item}

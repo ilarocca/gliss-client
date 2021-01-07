@@ -15,16 +15,16 @@ class MainNav extends Component {
 
   state = {
     username: this.context.currentUser.username,
+    clicked: false,
   };
 
+  //toggle mobile nav bar
   handleClick = (e) => {
     e.preventDefault();
-    let mainNav = document.getElementById('js-menu');
-    let navBarToggle = document.getElementById('js-navbar-toggle');
+    e.stopPropagation();
 
-    navBarToggle.addEventListener('click', function () {
-      mainNav.classList.toggle('active');
-    });
+    let mainNav = document.getElementById('js-menu');
+    mainNav.classList.toggle('active');
   };
 
   render() {

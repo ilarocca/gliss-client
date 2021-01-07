@@ -7,9 +7,8 @@ describe('AddItem Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     div.setAttribute('id', 'root');
-    const AppContext = jest.fn();
     ReactDOM.render(
-      <AuthContext.Provider value={{ AppContext }}>
+      <AuthContext.Provider value={{ currentUser: { id: 1 } }}>
         <AddItem />
       </AuthContext.Provider>,
       div

@@ -18,31 +18,33 @@ export class AuthProvider extends Component {
     hasAuth: TokenService.hasAuthToken(),
     currentUser: null,
     error: null,
+    mounted: false,
   };
 
   async componentDidMount() {
     this.getCurrentUser();
   }
 
-  async getCurrentUser(id) {
+  getCurrentUser = async () => {
     if (TokenService.hasAuthToken()) {
       try {
-        const user = await AuthApiService.getCurrentUser(id);
-        this.setState({ currentUser: user });
+        const user = await AuthApiService.getCurrentUser();
+        this.setState({ currentUser: user, mounted: true });
       } catch (err) {
         this.setState({ error: err.message });
       }
+    } else {
+      this.setState({ mounted: true });
     }
-  }
+  };
 
   login = (token) => {
     TokenService.saveAuthToken(token);
-    this.setState({ hasAuth: true });
   };
 
   logout = () => {
     TokenService.clearAuthToken();
-    this.setState({ hasAuth: false });
+    this.setState({ hasAuth: false, currentUser: null });
   };
 
   setCurrentUser = (user) => {
@@ -50,18 +52,23 @@ export class AuthProvider extends Component {
   };
 
   render() {
-    return (
-      <AuthContext.Provider
-        value={{
-          ...this.state,
-          login: this.login,
-          logout: this.logout,
-          setCurrentUser: this.setCurrentUser,
-          clearError: this.clearError,
-        }}
-      >
-        {this.props.children}
-      </AuthContext.Provider>
-    );
+    // fetch current user before render
+    if (this.state.mounted === false) {
+      return <></>;
+    } else {
+      return (
+        <AuthContext.Provider
+          value={{
+            ...this.state,
+            login: this.login,
+            logout: this.logout,
+            setCurrentUser: this.setCurrentUser,
+            clearError: this.clearError,
+          }}
+        >
+          {this.props.children}
+        </AuthContext.Provider>
+      );
+    }
   }
 }

@@ -12,12 +12,12 @@ export default class GetRecipes extends Component {
     user: this.context.currentUser,
     recipes: [],
     categoryCards: [],
+    error: '',
     mounted: false,
   };
 
   async componentDidMount() {
     const userItems = await ItemApiService.items(this.state.user.id);
-    this.setState({});
     const categories = {
       Grain: 1,
       Meat: 2,
@@ -35,7 +35,7 @@ export default class GetRecipes extends Component {
 
     for (const [key, value] of Object.entries(categories)) {
       const categoryItems = [];
-      userItems.map((item) => {
+      userItems.forEach((item) => {
         if (item.categoryId === value) {
           item.category = key;
           categoryItems.push(item);
@@ -57,6 +57,7 @@ export default class GetRecipes extends Component {
   };
 
   render() {
+    //fetch user items before render
     if (this.state.mounted === false) {
       return <div />;
     }
@@ -65,15 +66,16 @@ export default class GetRecipes extends Component {
         {this.state.items.length < 3 ? <h2>Add a few more items to your pantry!</h2> : null}
         {this.state.categoryCards.length === 0 ? null : (
           <div>
-            {/* <h2>Select items from your pantry</h2> */}
             <RecipesForm categoryCards={this.state.categoryCards} setRecipes={this.setRecipes} />
           </div>
         )}
 
+        <div>{this.state.error}</div>
+
         <ul className="recipes">
           {this.state.recipes.map((recipe) =>
             recipe.length === 0 ? null : (
-              <li className="recipe">
+              <li className="recipe" key={recipe.recipeName}>
                 <Recipe recipe={recipe.recipe} />
               </li>
             )

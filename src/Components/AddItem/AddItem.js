@@ -14,7 +14,6 @@ export default class AddItem extends Component {
   };
 
   handleSubmit = async (e) => {
-    console.log(this.state);
     e.preventDefault();
     this.setState({ error: null });
     if (this.state.item === '') {
@@ -24,6 +23,7 @@ export default class AddItem extends Component {
       const newItem = { item, categoryId, userId };
       try {
         await ItemApiService.addItem(newItem);
+        //trigger parent component rerender
         this.props.addItem();
         this.setState({
           item: '',

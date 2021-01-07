@@ -15,16 +15,19 @@
   flex-direction: column;
   justify-content: center;
 } */
-.recipe {
-  margin: 75px;
-  margin-left: 50px;
-  margin-right: 50px;
+.recipes {
+  padding-left: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
+  margin: auto;
+  text-align: center;
+  list-style-position: inside;
 }
 
-@media all and (min-width: 1200px) {
-  .recipe {
-    margin: auto;
-    text-align: center;
+@media all and (min-width: 760px) {
+  .recipes {
+    display: inline-block;
   }
 }

@@ -1,12 +1,11 @@
 .tagline {
   padding-top: 300px;
-  padding-bottom: 250px;
+  padding-bottom: 300px;
   border: 10px;
   background-image: url('main.png');
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
-  z-index: 99999;
 }
 
 .tagline-text {
@@ -63,7 +62,9 @@
 .descriptions {
   display: flex;
   flex-direction: column;
-  margin: 25px;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .start,
@@ -93,17 +94,14 @@
   text-shadow: 0.088rem 0.088rem 0.5625rem rgba(0, 0, 0, 0.188);
 }
 
-@media all and (min-width: 700px) {
-  .tagline {
-    padding: 300px;
-  }
+@media all and (min-width: 730px) {
   .tagline-text {
     font-size: 4em;
   }
   .descriptions {
     display: flex;
     flex-direction: row;
-    margin: 150px;
+    /* margin: 150px; */
     margin-top: 220px;
     margin-bottom: 220px;
   }
