@@ -1,4 +1,7 @@
 module.exports = {
   PORT: process.env.PORT || 8080,
-  API_ENDPOINT: process.env.REACT_APP || 'https://stark-tor-43136.herokuapp.com',
+  API_ENDPOINT: 'https://stark-tor-43136.herokuapp.com/api',
+  TOKEN_KEY: '',
 };
+
+// process.env.REACT_APP
