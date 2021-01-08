@@ -1,6 +1,5 @@
 import { React, Component } from 'react';
 import AuthContext from '../../Contexts/AuthContext';
-import ItemApiService from '../../Services/item-api-service';
 import { withRouter } from 'react-router-dom';
 import Ingredients from '../Ingredients/Ingredients';
 import './RecipesForm.css';

@@ -39,7 +39,15 @@ function LandingMain() {
           </div>
         </section>
       </div>
-      <footer>&#169;Gliss</footer>
+      <footer className="footer">
+        <div>&#169;Gliss</div>{' '}
+        <div className="demo-notes">
+          <i>
+            To use the demo account, select 'demo' icon. To get back to the landing page go to 'My Account' and 'sign
+            out'.
+          </i>
+        </div>
+      </footer>
     </>
   );
 }

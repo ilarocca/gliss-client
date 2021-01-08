@@ -16,6 +16,7 @@ div.LandingNav {
 .LandingTitle {
   width: 100px;
   height: 100px;
+  margin-right: 10px;
 }
 .signup-login {
   position: relative;
@@ -26,7 +27,7 @@ div.LandingNav {
   text-transform: uppercase;
   text-decoration: none;
   font-size: 14px;
-  margin: 8px;
+  margin: 6px;
 }
 
 .signup-link {
@@ -41,7 +42,20 @@ div.LandingNav {
   color: black;
   font-weight: 600;
 }
-@media all and (min-width: 600px) {
+
+.demo-submit {
+  margin: 6px;
+  padding: 6px;
+  background-color: rgb(195, 255, 160);
+  border: 0.5px black;
+}
+
+.demo-submit:hover {
+  border: 1px solid rgb(78, 184, 255);
+  background-color: rgb(78, 184, 255);
+}
+
+@media all and (min-width: 620px) {
   div.LandingNav {
     display: flex;
     justify-content: space-between;
@@ -59,7 +73,8 @@ div.LandingNav {
     box-shadow: 0 0.0625rem 0.1875rem 0 rgba(28, 92, 104, 0.1), 0 0.0625rem 0.125rem 0 rgba(28, 92, 104, 0.06);
   }
   .signup-link,
-  .login-link {
+  .login-link,
+  .demo-submit {
     margin: 18px;
   }
 }

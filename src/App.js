@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
 import LandingNav from './Routes/LandingNav/LandingNav';
 import LandingMain from './Routes/LandingMain/LandingMain';
 import SignUp from './Routes/SignUp/SignUp';
@@ -9,6 +10,7 @@ import UserHomePage from './Routes/UserHomePage/UserHomePage';
 import MyRecipes from './Routes/MyRecipes/MyRecipes';
 import MyAccount from './Routes/MyAccount/MyAccount';
 import GetRecipes from './Routes/GetRecipe/GetRecipes';
+import PageNotFound from './Routes/PageNotFound/PageNotFound';
 import AuthContext from './Contexts/AuthContext';
 import PublicOnlyRoute from './Components/Utils/PublicOnlyRoute';
 import PrivateRoute from './Components/Utils/PrivateRoute';
@@ -27,7 +29,7 @@ class App extends React.Component {
 
   renderMainRoutes() {
     return (
-      <React.Fragment>
+      <Switch>
         <PublicOnlyRoute exact path="/" component={LandingMain} />
         <PublicOnlyRoute path="/signup" component={SignUp} />
         <PublicOnlyRoute path="/login" component={Login} />
@@ -35,7 +37,8 @@ class App extends React.Component {
         <PrivateRoute path="/profile/:username/get-recipes" component={GetRecipes} />
         <PrivateRoute path="/profile/:username/my-recipes" component={MyRecipes} />
         <PrivateRoute path="/profile/:username/my-account" component={MyAccount} />
-      </React.Fragment>
+        <Route component={PageNotFound} />
+      </Switch>
     );
   }
 

@@ -35,7 +35,9 @@ function LandingNav() {
         <Link to="/signup" className="signup-link">
           Sign Up
         </Link>
-        <button onClick={handleClick}>Demo</button>
+        <button className="demo-submit" onClick={handleClick}>
+          Demo
+        </button>
       </nav>
     </div>
   );
