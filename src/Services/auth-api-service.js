@@ -3,8 +3,6 @@ import TokenService from './TokenService';
 
 const AuthApiService = {
   async login(username, password) {
-    console.log(config.API_ENDPOINT);
-
     const loginData = { username, password };
     const res = await fetch(`${config.API_ENDPOINT}/auth/login`, {
       method: 'POST',
@@ -20,7 +18,6 @@ const AuthApiService = {
   },
 
   async createUser(userData) {
-    console.log(config.API_ENDPOINT);
     const res = await fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
       headers: {

@@ -2,69 +2,58 @@
 
 > A grocery managment application that gathers recipes based on your pantry.
 
-### Demo
+This repo is the front-end client, built in React. You can see the app live at [https://gliss-client.vercel.app/](https://gliss-client.vercel.app/)
 
-<p><a>Live Demo</a></p>
+The app was designed with both mobile and desktop viewing in mind.
 
-### Screenshots
+To check out the app, you can either sign up or select the demo account.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Demo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p><a href="https://gliss-client.vercel.app/" target="_blank">Live Link</a></p>
 
-### `npm test`
+## Introduction
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It can be a daunting task to figure out what to make for dinner each night. Gliss makes viewing your pantry from anywhere easy and privides dinner ideas that you may have never thoughut of with the items that you have.
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="ReadMeScreenshots/Landing.png" alt="Landing Page"/>
+<img src="ReadMeScreenshots/LogIn.png" alt="Log In"/>
+<img src="ReadMeScreenshots/MyPantry.png" alt="My Pantry"/>
+<img src="ReadMeScreenshots/GetRecipes.png" alt="Get Recipes"/>
+<img src="ReadMeScreenshots/MyRecipes.png" alt="MyRecipes"/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technology
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Front End
 
-### `npm run eject`
+- React
+  - Create React App
+  - React Router
+- HTML5
+- CSS3 (scratch - no frameworks)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### APIs used
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Edamam (for recipes)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Testing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Jest
 
-## Learn More
+#### Production
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Deployed via Vercel
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Getting Started
 
-### Code Splitting
+Run `npm install` to load dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Run `npm test` to ensure a stable build
 
-### Analyzing the Bundle Size
+This is only the front end client, so develop locally you'll need the backend server as well.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To get the backend up and running see [https://github.com/ilarocca/gliss-api](https://github.com/ilarocca/gliss-api)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deployments are handled through Zeit and can be run via `npm run deploy`

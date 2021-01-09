@@ -59,7 +59,6 @@ class RecipesForm extends Component {
           });
         }
       } catch (err) {
-        console.log(err);
         this.setState({ error: err.message, loading: false });
       }
     }
