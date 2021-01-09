@@ -17,19 +17,6 @@ class RecipesForm extends Component {
     loading: false,
   };
 
-  // async componentDidMount() {
-  //   //pick three random user ingredients and assign them to placeholder
-  //   const userItems = await ItemApiService.items(this.state.user.id);
-
-  //   this.setState({
-  //     items: userItems,
-  //   });
-  // }
-
-  // componentWillReceiveProps() {
-  //   this.componentDidMount();
-  // }
-
   handleSubmit = async (e) => {
     e.preventDefault();
     //rerender empty homepage state
@@ -77,19 +64,6 @@ class RecipesForm extends Component {
     }
   };
 
-  // handleShuffle = () => {
-  //   const userItems = this.state.items;
-  //   const numbers = [];
-  //   for (let i = 0; i < 3; i++) {
-  //     numbers.push(Math.floor(Math.random() * userItems.length));
-  //   }
-  //   const uniq = [...new Set(numbers)];
-  //   const userIngredients = uniq.map((u) => userItems[u].item);
-  //   this.setState({
-  //     ingredients: userIngredients,
-  //   });
-  // };
-
   handleDelete = () => {
     if (this.props.userQuery && this.state.ingredients === '') {
       this.props.setQuery();
@@ -99,21 +73,6 @@ class RecipesForm extends Component {
   render() {
     return (
       <form className="js-recipe-form" onSubmit={this.handleSubmit}>
-        {/* <div>
-          <label for="item">Ingredients</label>
-          <input
-            type="text"
-            name="ingredients"
-            id="ingredients"
-            value={this.state.ingredients.join(', ')}
-            onChange={this.handleChange}
-            onEmptied={this.handleEmptied}
-            placeholder={'steak, potatoes, etc'}
-          />
-          <button type="button" onClick={this.handleShuffle}>
-            shuffle
-          </button>
-        </div> */}
         <ul className="ingredients">
           {this.props.categoryCards.map((category) =>
             category.length === 0 ? null : (
