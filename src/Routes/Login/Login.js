@@ -2,6 +2,7 @@ import React from 'react';
 import AuthApiService from '../../Services/auth-api-service';
 import AuthContext from '../../Contexts/AuthContext';
 import granite from './table.jpg';
+import Loader from 'react-loader-spinner';
 import './Login.css';
 
 class Login extends React.Component {
@@ -10,25 +11,25 @@ class Login extends React.Component {
     error: null,
     username: '',
     password: '',
+    loading: false,
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ error: null });
+    this.setState({ error: null, loading: true });
     try {
       const { username, password } = this.state;
       const response = await AuthApiService.login(username, password);
       // save authToken to local storage
       this.context.login(response.authToken);
-      console.log('set');
       delete response.authToken;
       // save user info to context
       this.context.setCurrentUser(response.user);
-
+      this.setState({ loading: false });
       // set next route on submit
       this.props.history.push(`/profile/${username}`);
     } catch (err) {
-      this.setState({ error: err.message });
+      this.setState({ error: err.message, loading: false });
     }
   };
 
@@ -77,6 +78,7 @@ class Login extends React.Component {
             <button type="submit" className="login-submit">
               Log In
             </button>
+            {this.state.loading === true ? <Loader type="ThreeDots" color="Black" height={80} width={80} /> : null}
           </form>
         </div>
       </div>

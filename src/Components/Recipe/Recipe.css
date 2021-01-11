@@ -47,12 +47,8 @@
   flex-direction: column;
   justify-content: center;
   min-height: auto;
-  margin: 50px;
+  margin: 28px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  /* display: box;
-  display: -webkit-box;
-  overflow-x: auto;
-  white-space: nowrap; */
 }
 
 .recipe-image {

@@ -11,11 +11,11 @@ export default class MyPantry extends Component {
     user: this.context.currentUser,
     items: [],
     categoryCards: [],
+    mounted: false,
   };
 
   async componentDidMount() {
     const userItems = await ItemApiService.items(this.state.user.id);
-    this.setState({});
     const categories = {
       Grain: 1,
       Meat: 2,
@@ -44,6 +44,7 @@ export default class MyPantry extends Component {
     this.setState({
       items: userItems,
       categoryCards: categoryCards,
+      mounted: true,
     });
   }
 
@@ -57,12 +58,21 @@ export default class MyPantry extends Component {
   };
 
   render() {
+    // fetch user items before render
+    if (this.state.mounted === false) {
+      return <div />;
+    }
     return (
       <main role="main" className="pantry">
         <header className="pantry-header">
           <h2 className="user-first-name">{this.state.user.firstName}'s Pantry</h2>
         </header>
         <AddItem addItem={this.addItem} />
+        {this.state.items.length < 3 ? (
+          <div className="pantry-instructions">
+            Enter an item name and select it's category from the drop down menu.
+          </div>
+        ) : null}
         <div>
           <ul className="category-card">
             {this.state.categoryCards.map((category) =>

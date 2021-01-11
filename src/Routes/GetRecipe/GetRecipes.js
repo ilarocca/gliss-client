@@ -66,10 +66,10 @@ export default class GetRecipes extends Component {
         {this.state.items.length < 3 ? <h2>Add a few more items to your pantry!</h2> : null}
         {this.state.categoryCards.length === 0 ? null : (
           <div>
+            <div className="recipe-instructions">Select the items you'd like to get recipes for.</div>
             <RecipesForm categoryCards={this.state.categoryCards} setRecipes={this.setRecipes} />
           </div>
         )}
-
         <div>{this.state.error}</div>
 
         <ul className="recipes">

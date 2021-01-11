@@ -26,6 +26,10 @@
   list-style-position: inside;
 }
 
+.recipe-instructions {
+  font-style: italic;
+}
+
 @media all and (min-width: 760px) {
   .recipes {
     display: inline-block;

@@ -16,8 +16,10 @@ export default class Ingredients extends Component {
 
         {this.props.category.map((item) => (
           <div className="ingredient">
-            <input type="checkbox" value={item.item} onChange={this.handleCheck} />
-            <label htmlFor={item.itemcategory}>{item.item}</label>
+            <label htmlFor={item.itemcategory}>
+              <input type="checkbox" value={item.item} className={item.itemcategory} onChange={this.handleCheck} />
+              {item.item}
+            </label>
           </div>
         ))}
       </fieldset>

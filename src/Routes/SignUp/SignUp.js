@@ -70,7 +70,7 @@ export default class SignUp extends Component {
       validationError.firstName = 'Cannot begin or end with spaces.';
     } else if (firstName.length < 2 || firstName.length > 20) {
       firstNameValid = false;
-      validationError.firstName = 'Must be between 2 and 20 charachters.';
+      validationError.firstName = 'Must be between 2 and 20 characters.';
     }
 
     this.setState({ firstNameValid, validationError }, this.validateForm);
@@ -86,7 +86,7 @@ export default class SignUp extends Component {
       validationError.lastName = 'Cannot begin or end with spaces.';
     } else if (lastName.length < 2 || lastName.length > 20) {
       lastNameValid = false;
-      validationError.lastName = 'Must be between 2 and 20 charachters.';
+      validationError.lastName = 'Must be between 2 and 20 characters.';
     }
 
     this.setState({ lastNameValid, validationError }, this.validateForm);
@@ -102,7 +102,7 @@ export default class SignUp extends Component {
       validationError.username = 'Cannot begin or end with spaces.';
     } else if (username.length < 4 || username.length > 25) {
       usernameValid = false;
-      validationError.username = 'Must be between 4 and 25 charachters.';
+      validationError.username = 'Must be between 4 and 25 characters.';
     }
 
     this.setState({ usernameValid, validationError }, this.validateForm);
@@ -118,7 +118,7 @@ export default class SignUp extends Component {
       validationError.password = 'Cannot begin or end with spaces.';
     } else if (password.length < 4) {
       passwordValid = false;
-      validationError.password = 'Must be at least 4 charachters.';
+      validationError.password = 'Must be at least 4 characters.';
     }
 
     this.setState({ passwordValid, validationError }, this.validateForm);

@@ -17,3 +17,10 @@
   font-family: 'Inter', sans-serif;
   text-align: center;
 }
+
+.pantry-instructions {
+  margin-top: 18px;
+  margin-left: 22px;
+  margin-right: 22px;
+  font-style: italic;
+}

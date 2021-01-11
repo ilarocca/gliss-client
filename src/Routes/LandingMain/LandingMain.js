@@ -9,7 +9,7 @@ function LandingMain() {
     <>
       <header className="tagline">
         <div>
-          <h2 className="tagline-text">Live in grocery bliss.</h2>
+          <h1 className="tagline-text">Live in grocery bliss.</h1>
           <Link to="/signup">
             <button className="get-started">Get Started</button>
           </Link>
